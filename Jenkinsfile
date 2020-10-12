@@ -1,5 +1,5 @@
 pipeline {
-    agent none 
+    agent any
     stages {
         stage('Example Build') {
             steps {
@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Example Test') {
             steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
+                cleanWs disableDeferredWipeout: true, deleteDirs: true
             }
         }
     }
